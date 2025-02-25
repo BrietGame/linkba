@@ -149,6 +149,6 @@ def send_invitation(driver, profile_url):
 
 
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# Local only
+#if __name__ == '__main__':
+ #   app.run(debug=True)
