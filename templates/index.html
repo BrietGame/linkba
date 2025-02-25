@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche Entreprises</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Recherche d'Entreprises</h1>
+        <form method="POST" class="mb-5">
+            <div class="mb-3">
+                <label for="api_key" class="form-label">Api Key :</label>
+                <input type="text" id="api_key" name="api_key" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="search" class="form-label">Clé de recherche :</label>
+                <input type="text" id="search" name="search" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="departement" class="form-label">Département :</label>
+                <input type="text" id="departement" name="departement" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="date_creation_min" class="form-label">Date création min :</label>
+                <input type="date" id="date_creation_min" name="date_creation_min" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="date_creation_max" class="form-label">Date création max :</label>
+                <input type="date" id="date_creation_max" name="date_creation_max" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </form>
+
+        {% if success %}
+        <div class="alert alert-success" role="alert">
+            Recherche effectuée avec succès
+        </div>
+        {% endif %}
+
+        {% if entreprises %}
+        <h2>Résultats :</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Entreprise</th>
+                    <th>Dirigeant</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entreprise in entreprises %}
+                <tr>
+                    <td>{{ entreprise.Entreprise }}</td>
+                    <td>{{ entreprise.Dirigeant }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
